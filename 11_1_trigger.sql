@@ -1,0 +1,18 @@
+DELIMITER //
+
+CREATE TRIGGER users_insert AFTER INSERT ON users FOR EACH ROW
+BEGIN 
+	INSERT INTO logs VALUES (NULL, DEFAULT, 'users', NEW.id, NEW.name);
+END//
+
+CREATE TRIGGER catalogs_insert AFTER INSERT ON catalogs FOR EACH ROW
+BEGIN 
+	INSERT INTO logs VALUES (NULL, DEFAULT, 'catalogs', NEW.id, NEW.name);
+END//
+
+CREATE TRIGGER products_insert AFTER INSERT ON products FOR EACH ROW
+BEGIN 
+	INSERT INTO logs VALUES (NULL, DEFAULT, 'products', NEW.id, NEW.name);
+END//
+
+DELIMITER ;
